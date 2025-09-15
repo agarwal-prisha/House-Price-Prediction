@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 from sklearn.model_selection import train_test_split
+from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeRegressor
@@ -32,6 +33,7 @@ print(data.describe())
 #simple visualization
 sns.histplot(data["medv"], bins=30, kde=True)
 plt.title("Distribution of House Prices (medv)")
+plt.savefig("results/house_price_distribution.png")
 plt.show()
 
 #Preprocessing
@@ -44,6 +46,10 @@ y = data["medv"]
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
+imputer = SimpleImputer(strategy="mean")
+
+X_train = imputer.fit_transform(X_train)
+X_test = imputer.transform(X_test)
 
 #Scaling features (important for linear regression)
 scaler = StandardScaler()
@@ -78,7 +84,15 @@ for model, metrics in results.items():
 
 #Visualizatiing the Results(additional)
 result_df = pd.DataFrame(results).T
-result_df.plot(kind="bar", figsize=(8,5))
-plt.title("Model Performance Comparison")
-plt.ylabel("Score (Lower MSE is better, Higher R2 is better)")
+fig, ax = plt.subplots(figsize=(8,5))   
+result_df.plot(kind="bar", ax=ax)       
+ax.set_title("Model Performance Comparison")
+ax.set_ylabel("Score (Lower MSE is better, Higher R2 is better)")
+ax.set_xticklabels(result_df.index,rotation=0,ha='center')
+fig.savefig("results/model_performance.png")   # save using fig
 plt.show()
+
+with open("results/evaluation.txt", "w") as f:
+    for model, metrics in results.items():
+        f.write(f"{model}: MSE={metrics['MSE']:.2f}, R2={metrics['R2']:.2f}\n")
+

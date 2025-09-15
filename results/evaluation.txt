@@ -1,0 +1,3 @@
+Linear Regression: MSE=24.38, R2=0.67
+Decision Tree: MSE=8.38, R2=0.89
+Random Forest: MSE=7.83, R2=0.89
