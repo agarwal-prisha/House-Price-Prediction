@@ -1,14 +1,14 @@
 House Price Prediction using ML
 
-Overview
+Overview:
 This project predicts house prices using the Boston Housing Dataset.  
 It compares multiple ML models:Linear Regression, Decision Tree, Random Forest, and evaluates their performance.
 
-Dataset
+Dataset:
 Dataset Source:Kaggle Boston Housing Dataset - https://www.kaggle.com/datasets/arunjangir245/boston-housing-dataset
 Target variable:`medv` (Median value of owner-occupied homes in $1000s)
 
-Preprocessing Steps
+Preprocessing Steps:
 Explanation:
 Selected features (X) and target (y = medv).
 Split dataset into train (80%) and test (20%) sets.
@@ -35,12 +35,12 @@ scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
 
-Models Used
+Models Used:
 Linear Regression
 Decision Tree Regressor
 Random Forest Regressor
 
-Installation
+Installation:
 Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/<your-username>/house-price-prediction.git
