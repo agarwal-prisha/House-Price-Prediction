@@ -43,8 +43,11 @@ Random Forest Regressor
 Installation:
 Clone the repo and install dependencies:
 ```bash
-git clone https://github.com/<your-username>/house-price-prediction.git
-cd house-price-prediction
+git clone https://github.com/agarwal-prisha/acm-rnd-task.git
+cd acm-rnd-task
 pip install -r requirements.txt
+
+To run the code:
+python house_price_prediction.py
 
 
