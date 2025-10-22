@@ -44,7 +44,7 @@ Installation:
 Clone the repo and install dependencies:
 ```bash
 git clone https://github.com/agarwal-prisha/acm-rnd-task.git
-cd acm-rnd-task
+cd House-Price-Prediction
 pip install -r requirements.txt
 
 To run the code:
